@@ -1,2 +1,12 @@
 resolver: nightly-2016-10-21
-extra-deps: []
+extra-deps:
+- yi-core-0.13.5
+- yi-frontend-pango-0.13.5
+- yi-frontend-vty-0.13.5
+- yi-keymap-emacs-0.13.5
+- yi-keymap-vim-0.13.5
+- yi-misc-modes-0.13.5
+- yi-mode-haskell-0.13.5
+- yi-mode-javascript-0.13.5
+- Hclip-3.0.0.4
+- yi-language-0.13.5

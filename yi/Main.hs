@@ -28,6 +28,9 @@ import Yi.Config.Default.Emacs (configureEmacs)
 #ifdef PANGO
 import Yi.Config.Default.Pango (configurePango)
 #endif
+#ifdef FLTK
+import Yi.Config.Default.Fltk (configureFltk)
+#endif
 
 frontends :: [(String, ConfigM ())]
 frontends = [
@@ -36,6 +39,9 @@ frontends = [
 #endif
 #ifdef VTY
   ("vty", configureVty),
+#endif
+#ifdef FLTK
+  ("fltk", configureFltk),
 #endif
   ("", return ())
   ]

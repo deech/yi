@@ -17,6 +17,10 @@ flags:
     description: Include the pango (GUI) frontend
     manual: True
     default: True
+  fltk:
+    description: Include the FLTK (GUI) frontend
+    manual: True
+    default: True
   vim:
     description: Include the vim keymap
     manual: True
@@ -25,6 +29,10 @@ flags:
     description: Include the emacs keymap
     manual: True
     default: True
+  fastCompile:
+    description: Turn off optimizations for faster compilation
+    manual: True
+    default: False
 
 dependencies:
     - base >= 4.8 && < 5
@@ -44,6 +52,9 @@ when:
   - condition: flag(pango)
     dependencies: yi-frontend-pango
     cpp-options: -DPANGO
+  - condition: flag(fltk)
+    dependencies: yi-frontend-fltk
+    cpp-options: -DFLTK
   - condition: flag(vim)
     dependencies: yi-keymap-vim
     cpp-options: -DVIM
@@ -55,3 +66,11 @@ executables:
     yi:
         main: Main.hs
         source-dirs: .
+
+        when:
+         - condition: impl(ghc >= 7.10) && flag(FastCompile)
+           ghc-options: -fno-specialise -fmax-simplifier-iterations=0 -fsimplifier-phases=0
+         - condition: os(darwin)
+           ghc-options: -pgml g++ "-optl-Wl,-lfltkc"
+         - condition: (!os(darwin) && !os(windows))
+           ghc-options: -pgml g++ "-optl-Wl,--whole-archive" "-optl-Wl,-Bstatic" "-optl-Wl,-lfltkc" "-optl-Wl,-Bdynamic" "-optl-Wl,--no-whole-archive"

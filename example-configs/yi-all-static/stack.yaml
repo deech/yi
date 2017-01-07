@@ -6,6 +6,7 @@ packages:
     - 'yi-core'
     - 'yi-frontend-vty'
     - 'yi-frontend-pango'
+    - 'yi-frontend-fltk'
     - 'yi-language'
     - 'yi-keymap-vim'
     - 'yi-keymap-emacs'

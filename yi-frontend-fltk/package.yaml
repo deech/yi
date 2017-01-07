@@ -1,0 +1,30 @@
+name: yi-frontend-fltk
+version: 0.13.5
+synopsis: Fltk frontend for Yi editor
+maintainer: Yi developers <yi-devel@googlegroups.com>
+license: GPL-2
+github: yi-editor/yi
+category: Yi
+
+ghc-options: -Wall -ferror-spans
+
+dependencies:
+    - base >= 4.8 && < 5
+    - containers
+    - filepath
+    - microlens-platform
+    - mtl
+    - oo-prototypes
+    - fltkhs >= 0.5.0.1
+    - pointedlist
+    - text
+    - transformers-base
+    - yi-core
+    - yi-language
+    - yi-rope
+
+library:
+    source-dirs: src
+    exposed-modules:
+        - Yi.Config.Default.Fltk
+        - Yi.Frontend.Fltk

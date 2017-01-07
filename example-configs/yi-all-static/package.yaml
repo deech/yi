@@ -16,6 +16,10 @@ flags:
     description: Include the pango (GUI) frontend
     manual: True
     default: True
+  fltk:
+    description: Include the fltk (GUI) frontend
+    manual: True
+    default: True
   vim:
     description: Include the vim keymap
     manual: True
@@ -43,6 +47,9 @@ when:
   - condition: flag(pango)
     dependencies: yi-frontend-pango
     cpp-options: -DPANGO
+  - condition: flag(fltk)
+    dependencies: yi-frontend-fltk
+    cpp-options: -DFLTK
   - condition: flag(vim)
     dependencies: yi-keymap-vim
     cpp-options: -DVIM
